@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getLatestAds } from "./auth/service"
 
+const noPhotoImg = "https://lyrictheatreokc.com/wp-content/uploads/2021/11/Ciao-Ciao-Image-Coming-Soon-500px.jpg"
 
 const AdsPage = () => {
     const [ads, setAds] = useState([])
@@ -8,17 +9,16 @@ const AdsPage = () => {
     
     useEffect( () => {
         getLatestAds().then(ads => {
-            console.log(ads)
-            setAds(ads)
+            setAds(ads.reverse())
             })
         
     }, [])
 
     return (
-    <div className="adsPage">
+    <div className = "adsPage">
         {ads.map(ad => (
-            <div key={ad.id}>
-                <img src={ad.photo} alt={ad.name}></img>
+            <div key={ad.id} className = "ad">
+                <img src={ad.photo || noPhotoImg} alt={ad.name}></img>
                 <p>{ad.name}</p>
                 <p>{ad.price} €</p>
                 <p>{ad.sale}</p>
