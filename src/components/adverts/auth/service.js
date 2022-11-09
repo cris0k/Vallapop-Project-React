@@ -1,8 +1,22 @@
-import client from '../../../api/client';
+import client, {
+    removeAuthorizationHeader,
+    setAuthorizationHeader,
+  } from '../../../api/client';
 
-const adsUrl = '/api/v1/adverts';
-
-export const getLatestAds = () => {
-  const url = adsUrl;
-  return client.get(url);
-};
+  import storage from '../../../utils/storage';
+  
+  export const login = credentials => {
+    return client
+    .post('/api/auth/login', credentials)
+    .then(({ accessToken }) => {
+      setAuthorizationHeader(accessToken);
+      storage.set('auth', accessToken);
+    });
+  };
+  
+  export const logout = () => {
+    return Promise.resolve().then(() => {
+      removeAuthorizationHeader();
+      storage.remove('auth');
+    });
+  };

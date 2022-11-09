@@ -1,28 +1,34 @@
 import { useState } from "react"
 import FormField from "./FormField";
+import { login } from "./service";
 
-const LoginPage = () => {
+const LoginPage = ({onLogin}) => {
 
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
 
-    const handleChangeUsername = event => setUsername(event.target.value);
+    const handleChangeEmail = event => setEmail(event.target.value);
     const handleChangePassword = event => setPassword(event.target.value);
 
     const handleSubmit = async event => {
         event.preventDefault();
+
+        login({email,password}).then(onLogin)
     }
+
+
 
     return <div>
         <h1> Log In </h1>
         <form onSubmit={handleSubmit}>
             <FormField 
-            type='text' 
-            name="username" 
-            label="Username" 
+            type="email" 
+            name="email" 
+            placeholder="exampe@gmail.com"
+            label="Email" 
             className="login-input"
-            onChange={handleChangeUsername}
-            value={username}/>
+            onChange={handleChangeEmail}
+            value={email}/>
             
             <FormField 
             type='password' 
@@ -32,7 +38,7 @@ const LoginPage = () => {
             onChange={handleChangePassword}
             value={password}/>
             
-            <button type="submit"> Log In </button>
+            <button type="submit" disabled={ !(email && password)}> Log In </button>
         </form>
     </div>
 }
