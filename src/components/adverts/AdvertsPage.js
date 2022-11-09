@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getLatestAds } from "./auth/service"
+import { getLatestAds } from "./service"
 import Layout from '../layout/Layout'
 
 const noPhotoImg = "https://lyrictheatreokc.com/wp-content/uploads/2021/11/Ciao-Ciao-Image-Coming-Soon-500px.jpg"
@@ -15,7 +15,7 @@ const AdsPage = () => {
         }
         execute();
         
-    }, [ads]) //[] means that it will render just one time
+    }, []) //[] means that it will render just one time
 
     return (
         <Layout title='Adverts' >
