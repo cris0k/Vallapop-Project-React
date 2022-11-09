@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import './FormField.css';
 
-const FormField = ({ className, label, ...props }) => {
+export const FormField = ({ className, label, ...props }) => {
   return (
     <div className={classNames('formField', className)}>
       <label>
@@ -13,4 +13,11 @@ const FormField = ({ className, label, ...props }) => {
   );
 };
 
-export default FormField;
+export const Checkbox = ({ label, className, ...props}) => {
+  return (
+    <div>
+      <input className="login-checkox" type="checkbox" {...props}/>
+      <span>{label}</span>
+    </div>
+  )
+}
