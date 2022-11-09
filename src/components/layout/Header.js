@@ -2,7 +2,7 @@ const Header = () => {
     return (
     <header>
         <nav>
-            <button>Log In</button>
+            <button>Log out</button>
         </nav>
         
     </header>
