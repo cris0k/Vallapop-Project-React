@@ -97,10 +97,6 @@ button:hover, .nav-link:hover {
   transition: background-color .3s linear;
 }
 
-.loginPage-error {
-  text-align: center;
-}
-
 footer {
   padding: 0.5rem;
   margin-top: auto;

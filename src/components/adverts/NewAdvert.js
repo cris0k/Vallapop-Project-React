@@ -1,9 +1,10 @@
-import Layout from "../layout/Layout"
+import { Link } from "react-router-dom"
+import Page from "../layout/Page"
 import { Checkbox, FormField } from "./auth/FormField"
 
 const NewAd = props => {
     return(
-        <Layout title='Create your advert' {...props}>
+        <Page title='Create your advert' {...props}>
             <form>
                 <FormField
                 label='Name'/>
@@ -22,11 +23,16 @@ const NewAd = props => {
                 <input
                 type="file"
                 onChange={event => console.log(event.target.files)}/>
-                <button 
-                type="submit" 
-                > Post Advert </button>
+                <div>
+                    <button type="submit"> 
+                    Post Advert 
+                    </button>
+                    <Link to ='/'>
+                        <button >Cancel</button>
+                    </Link>
+                </div>
             </form>
-        </Layout>
+        </Page>
     ) 
 }
 

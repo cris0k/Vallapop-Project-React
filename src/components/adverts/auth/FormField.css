@@ -32,5 +32,15 @@ label {
     border-color: var(--details-dark);
     cursor: pointer;
     font-size: 1.2rem;
-    
 }
+.loginPage-error {
+    text-align: center;
+    background-color:var(--button-hover);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: calc(100% - 40px);
+    max-width: 500px;
+    cursor:pointer;
+  }

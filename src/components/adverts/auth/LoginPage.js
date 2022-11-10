@@ -29,7 +29,7 @@ const LoginPage = ({onLogin}) => {
             onLogin();
             const to = location.state?.from?.pathname || '/';
             navigate(to, { replace: true });
-            
+
         } catch (error) {
             setError(error);
             setIsLoading(false);
@@ -71,7 +71,8 @@ const LoginPage = ({onLogin}) => {
         </form>
         {error && (
         <div onClick={resetError} className="loginPage-error">
-          {error.message}
+          {error.message = 'Wrong email or password'}
+          
         </div>
       )}
     </div>

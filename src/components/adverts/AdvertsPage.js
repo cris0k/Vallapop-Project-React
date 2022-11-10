@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getLatestAds } from "./service"
-import Layout from '../layout/Layout'
 import { Link } from "react-router-dom"
+import Page from "../layout/Page"
 
 export const noPhotoImg = "https://lyrictheatreokc.com/wp-content/uploads/2021/11/Ciao-Ciao-Image-Coming-Soon-500px.jpg"
 
@@ -19,7 +19,7 @@ const AdsPage = props => {
     }, []) //[] means that it will render just one time
 
     return (
-        <Layout title='Adverts' {...props}>
+        <Page title='Adverts' {...props}>
             <div>
                 {ads.length ? (
                     <div className = "adsPage">
@@ -40,7 +40,7 @@ const AdsPage = props => {
                             </Link>
                             )}
             </div>      
-        </Layout>
+        </Page>
     )
 }
 

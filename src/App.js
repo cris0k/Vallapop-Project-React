@@ -5,6 +5,7 @@ import LoginPage from './components/adverts/auth/LoginPage';
 import NewAd from './components/adverts/NewAdvert';
 import AdDetail from './components/adverts/AdvertDetail';
 import RequireAuth from './components/adverts/auth/RequireAuth';
+import Layout from './components/layout/Layout';
 
 function App({isInitiallyLogged}) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged)
@@ -15,20 +16,27 @@ function App({isInitiallyLogged}) {
   return (
     
     <div className="App">
-      <Routes>
+      <Routes >
         <Route path ='/login' element={<LoginPage onLogin={handleLogin} />}/>
-        <Route path = '/api/v1/adverts' element = {
-          <RequireAuth isLogged={isLogged}>
-            <AdsPage isLogged={isLogged} onLogout={handleLogout} />
-          </RequireAuth>}/>
-        <Route path = '/api/v1/adverts/:id' element={
-          <RequireAuth isLogged={isLogged}>
-            <AdDetail isLogged={isLogged} onLogout={handleLogout}/>
-          </RequireAuth>}/>
-        <Route path = '/api/v1/adverts/new' element= {
-          <RequireAuth isLogged={isLogged}>
-            <NewAd isLogged={isLogged} onLogout={handleLogout}/>
-          </RequireAuth>}/>
+        <Route
+        path = '/api/v1/adverts' 
+        element={<Layout isLogged={isLogged} onLogout={handleLogout} />}>
+
+          <Route index element = {
+            <RequireAuth isLogged={isLogged}>
+              <AdsPage />
+            </RequireAuth>}/>
+          <Route path = ':id' element={
+            <RequireAuth isLogged={isLogged}>
+              <AdDetail />
+            </RequireAuth>}/>
+          <Route path = 'new' element= {
+            <RequireAuth isLogged={isLogged}>
+              <NewAd />
+            </RequireAuth>}/>
+
+        </Route>
+        
         <Route path='/' element={<Navigate to='/api/v1/adverts'/>}/>
         <Route path='/404' element={<h1>404 | Not Found</h1>}/>
         <Route path='*' element={<Navigate to='/404'/>}/>

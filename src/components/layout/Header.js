@@ -10,9 +10,6 @@ const Header = ({isLogged, onLogout }) => {
     return (
         <header>
             <nav className="header-nav">
-                <NavLink to="/" className="nav-link" style={({ isActive }) => (isActive ? {  backgroundColor : 'var(--button-hover)' } : null)}>
-                    Home
-                </NavLink>
                 <NavLink to="/api/v1/adverts/new" className="nav-link" style={({ isActive }) => (isActive ? {  backgroundColor : 'var(--button-hover)' } : null)}>
                 New Advert
                 </NavLink>

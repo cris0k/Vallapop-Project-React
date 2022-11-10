@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Layout from "../layout/Layout"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Page from "../layout/Page";
 import { noPhotoImg } from "./AdvertsPage";
 import { getAdsDetail } from "./service";
 
@@ -30,15 +30,18 @@ const AdDetail = props => {
     }, []);
 
     return(
-        <Layout title='Advert Detail' {...props}>
+        <Page title='Advert Detail' {...props}>
             <div className="ad-details"> 
                 <img src={ad.photo || noPhotoImg} alt={ad.name}></img>
                 <p>{ad.name}</p>
                 <p>{ad.price} €</p>
                 <p>{ad.sale}</p>
                 <p>{ad.tags}</p>
+                <Link to ='/'>
+                    <button >Go back</button>
+                </Link>
             </div>
-        </Layout>
+        </Page>
     ) 
 }
 
