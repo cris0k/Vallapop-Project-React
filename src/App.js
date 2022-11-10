@@ -17,8 +17,8 @@ function App({isInitiallyLogged}) {
       <Routes>
         <Route path ='/login' element={<LoginPage onLogin={handleLogin} />}/>
         <Route path = '/api/v1/adverts' element = {<AdsPage isLogged={isLogged} onLogout={handleLogout} />}/>
-        <Route path = '/api/v1/adverts/:id' element={<AdDetail />}/>
-        <Route path = '/api/v1/adverts/new' element= {<NewAd />}/>
+        <Route path = '/api/v1/adverts/:id' element={<AdDetail isLogged={isLogged} onLogout={handleLogout}/>}/>
+        <Route path = '/api/v1/adverts/new' element= {<NewAd isLogged={isLogged} onLogout={handleLogout}/>}/>
         <Route path='/' element={<Navigate to='/api/v1/adverts'/>}/>
         <Route path='/404' element={<h1>404 | Not Found</h1>}/>
         <Route path='*' element={<Navigate to='/404'/>}/>
