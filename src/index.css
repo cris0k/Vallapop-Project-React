@@ -4,15 +4,14 @@
   font-size: 16px;
   font-weight: 200;
   --background-color:#c2d0ff;
-  --header-footer:#ffa200;
+  --button:#ffa200;
+  --button-hover:#fcb336;
   --details-dark:#294E6B;
   --details-light-blue:#5AADED;
   --details-white:#ffffff;
   --details-black:#000000;
-  --disabled:#bfc1c2;
-  --cancel: #dd0202;
-  --green-bttn: #03ac03;
-  --yellow-bttn:#e4e404;
+  --disabled:#bec0c1;
+  --details-gray:#e8f0f0;
   --black-shadow:#00000060;
   
   font-family: 'Poppins', sans-serif;
@@ -37,12 +36,17 @@ body {
   min-width: 300px;
   padding: 5px;
   margin: 10px 0px;
-  background-color: var(--details-gray);
+  background-color: var(--details-white);
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.5rem;
   font-weight: 200;
+  cursor: pointer;
+}
+.ad:hover {
+  background-color: var(--details-gray);
+  transition: background-color .3s linear;
 }
 
 img {
@@ -51,3 +55,45 @@ img {
   margin-top: 10px;
    
 }
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  
+}
+nav {
+  background-color: var(--background-color);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  position: sticky;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+
+  cursor: pointer;
+  background-color: var(--button);
+  padding: 10px;
+  border-radius: 10%;
+  margin-left: 10px;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+  transition: background-color .3s linear;
+}
+
+.loginPage-error {
+  text-align: center;
+}
+
+footer {
+  padding: 0.5rem;
+  margin-top: auto;
+  text-align: center;
+  background-color: var(--background-color);
+}
+

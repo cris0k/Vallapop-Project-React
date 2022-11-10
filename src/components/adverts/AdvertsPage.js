@@ -4,7 +4,7 @@ import Layout from '../layout/Layout'
 
 const noPhotoImg = "https://lyrictheatreokc.com/wp-content/uploads/2021/11/Ciao-Ciao-Image-Coming-Soon-500px.jpg"
 
-const AdsPage = () => {
+const AdsPage = props => {
     const [ads, setAds] = useState([])
 
     
@@ -18,7 +18,7 @@ const AdsPage = () => {
     }, []) //[] means that it will render just one time
 
     return (
-        <Layout title='Adverts' >
+        <Layout title='Adverts' {...props}>
             <div>
                 {ads.length ? (
                     <div className = "adsPage">
@@ -28,10 +28,11 @@ const AdsPage = () => {
                                 <p>{ad.name}</p>
                                 <p>{ad.price} €</p>
                                 <p>{ad.sale}</p>
+
                                 </div>))}
                             </div>
                         ):(
-                        <button>Post First Advert</button>
+                        <button className="fistAd-bttn">Post First Advert</button>
                 )}
             </div>      
         </Layout>

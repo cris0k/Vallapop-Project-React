@@ -11,7 +11,7 @@ const LoginPage = ({onLogin}) => {
     const handleChangeEmail = event => setEmail(event.target.value);
     const handleChangePassword = event => setPassword(event.target.value);
     const resetError = () => setError(null);
-    const [isFetching, setIsFetching] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [checked, setChecked] = useState(false)
 
     
@@ -21,13 +21,13 @@ const LoginPage = ({onLogin}) => {
         event.preventDefault();
         try {
             resetError();
-            setIsFetching(true);
+            setIsLoading(true);
             await login({email,password});
             onLogin();
             
         } catch (error) {
             setError(error);
-            setIsFetching(false);
+            setIsLoading(false);
             
         }
 
@@ -62,7 +62,7 @@ const LoginPage = ({onLogin}) => {
             
             <button 
             type="submit" 
-            disabled={ !(email && password && !isFetching)}> Log In </button>
+            disabled={ !(email && password && !isLoading)}> Log In </button>
         </form>
         {error && (
         <div onClick={resetError} className="loginPage-error">

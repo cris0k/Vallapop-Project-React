@@ -1,7 +1,7 @@
 import Header from '../layout/Header'
 
-const Layout = ({ children, title}) => <div>
-    <Header/>
+const Layout = ({ children, title, ...props}) => <div>
+    <Header {...props}/>
     <main>
         <h1>{title}</h1>
         <section>{children}</section>
