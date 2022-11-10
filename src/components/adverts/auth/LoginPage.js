@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLocation, useNavigate } from 'react-router-dom';
 import {FormField, Checkbox } from "./FormField";
 import { login } from "./service";
 
@@ -12,6 +13,8 @@ const LoginPage = ({onLogin}) => {
     const handleChangePassword = event => setPassword(event.target.value);
     const resetError = () => setError(null);
     const [isLoading, setIsLoading] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
     const [checked, setChecked] = useState(false)
 
     
@@ -24,6 +27,8 @@ const LoginPage = ({onLogin}) => {
             setIsLoading(true);
             await login({email,password});
             onLogin();
+            const to = location.state?.from?.pathname || '/';
+            navigate(to, { replace: true });
             
         } catch (error) {
             setError(error);
