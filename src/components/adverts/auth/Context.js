@@ -1,11 +1,23 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
-export const AuthContextProvider = AuthContext.Provider;
 export const AuthContextConsumer = AuthContext.Consumer;
 
 AuthContext.displayName = 'Auth';
+
+export const AuthContextProvider = ({ isInitiallyLogged, children }) => {
+    const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+  
+    const handleLogin = () => setIsLogged(true);
+    const handleLogout = () => setIsLogged(false);
+  
+    return (
+      <AuthContext.Provider value={{ isLogged, handleLogin, handleLogout }}>
+        {children}
+      </AuthContext.Provider>
+    );
+  };
 
 export const useAuth = () => { //custom Hook must (use<Hook name>)
     const value = useContext(AuthContext);
