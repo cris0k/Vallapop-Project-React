@@ -43,4 +43,5 @@ label {
     width: calc(100% - 40px);
     max-width: 500px;
     cursor:pointer;
+    margin-top: 10px;
   }

@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { Link , NavLink } from "react-router-dom";
-import AuthContext from "../adverts/auth/Context";
+import { useAuth } from "../adverts/auth/Context";
 import { logout } from "../adverts/auth/service"
 
 const Header = () => {
-    const { isLogged, handleLogout } = useContext(AuthContext);     
+    const { isLogged, handleLogout } = useAuth();     
 
     const handleLogoutClick = async () => {
         await logout();

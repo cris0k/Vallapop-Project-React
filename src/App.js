@@ -19,7 +19,7 @@ function App({isInitiallyLogged}) {
     <div className="App">
       <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
         <Routes >
-          <Route path ='/login' element={<LoginPage onLogin={handleLogin} />}/>
+          <Route path ='/login' element={<LoginPage/>}/>
           <Route
           path = '/api/v1/adverts' 
           element={<Layout />}>
