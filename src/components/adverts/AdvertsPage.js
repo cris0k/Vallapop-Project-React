@@ -30,7 +30,7 @@ const AdsPage = props => {
                             </Link>
                                 <p>{ad.name}</p>
                                 <p>{ad.price} €</p>
-                                <p>{ad.sale}</p>
+                                <p>{ad.sale ? 'Selling' : 'Searching'}</p>
                         </div>
                         ))}
                     </div>

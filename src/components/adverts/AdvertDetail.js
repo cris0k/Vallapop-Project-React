@@ -33,16 +33,20 @@ const AdDetail = props => {
         <Page title='Advert Detail' {...props}>
             <div className="ad-details"> 
                 <img src={ad.photo || noPhotoImg} alt={ad.name}></img>
-                <p>{ad.name}</p>
-                <p>{ad.price} €</p>
-                <p>{ad.sale}</p>
-                <p>{ad.tags}</p>
-                <Link to ='/'>
-                    <button >Go back</button>
+                <div>
+                    <p>{ad.name}</p>
+                    <p>{ad.price} €</p>
+                    <p>{ad.sale ? 'Selling' : 'Searching'}</p>
+                    <p>Tags : {ad.tags}</p>
+                    <time>{Date(ad.createdAt)}</time>
+                </div>
+                <Link to ='/' className="go-back-bttn">
+                    <button > Back </button>
                 </Link>
             </div>
         </Page>
     ) 
+    
 }
 
 export default AdDetail

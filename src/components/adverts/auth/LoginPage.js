@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useLocation, useNavigate } from 'react-router-dom';
+import AuthContext from "./Context";
 import {FormField, Checkbox } from "./FormField";
 import { login } from "./service";
 
-const LoginPage = ({onLogin}) => {
+const LoginPage = () => {
+    const { handleLogin } = useContext(AuthContext);
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
@@ -15,6 +17,7 @@ const LoginPage = ({onLogin}) => {
     const [isLoading, setIsLoading] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+    
     const [checked, setChecked] = useState(false)
 
     
@@ -26,7 +29,7 @@ const LoginPage = ({onLogin}) => {
             resetError();
             setIsLoading(true);
             await login({email,password});
-            onLogin();
+            handleLogin();
             const to = location.state?.from?.pathname || '/';
             navigate(to, { replace: true });
 
@@ -38,7 +41,7 @@ const LoginPage = ({onLogin}) => {
 
     };
 
-    return <div>
+    return <div className="login-form">
         <h1> Log In </h1>
         <form onSubmit={handleSubmit}>
             <FormField 

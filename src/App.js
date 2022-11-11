@@ -6,6 +6,7 @@ import NewAd from './components/adverts/NewAdvert';
 import AdDetail from './components/adverts/AdvertDetail';
 import RequireAuth from './components/adverts/auth/RequireAuth';
 import Layout from './components/layout/Layout';
+import { AuthContextProvider } from './components/adverts/auth/Context';
 
 function App({isInitiallyLogged}) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged)
@@ -16,31 +17,33 @@ function App({isInitiallyLogged}) {
   return (
     
     <div className="App">
-      <Routes >
-        <Route path ='/login' element={<LoginPage onLogin={handleLogin} />}/>
-        <Route
-        path = '/api/v1/adverts' 
-        element={<Layout isLogged={isLogged} onLogout={handleLogout} />}>
+      <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
+        <Routes >
+          <Route path ='/login' element={<LoginPage onLogin={handleLogin} />}/>
+          <Route
+          path = '/api/v1/adverts' 
+          element={<Layout />}>
 
-          <Route index element = {
-            <RequireAuth isLogged={isLogged}>
-              <AdsPage />
-            </RequireAuth>}/>
-          <Route path = ':id' element={
-            <RequireAuth isLogged={isLogged}>
-              <AdDetail />
-            </RequireAuth>}/>
-          <Route path = 'new' element= {
-            <RequireAuth isLogged={isLogged}>
-              <NewAd />
-            </RequireAuth>}/>
+            <Route index element = {
+              <RequireAuth >
+                <AdsPage />
+              </RequireAuth>}/>
+            <Route path = ':id' element={
+              <RequireAuth >
+                <AdDetail />
+              </RequireAuth>}/>
+            <Route path = 'new' element= {
+              <RequireAuth>
+                <NewAd />
+              </RequireAuth>}/>
 
-        </Route>
-        
-        <Route path='/' element={<Navigate to='/api/v1/adverts'/>}/>
-        <Route path='/404' element={<h1>404 | Not Found</h1>}/>
-        <Route path='*' element={<Navigate to='/404'/>}/>
-      </Routes>
+          </Route>
+          
+          <Route path='/' element={<Navigate to='/api/v1/adverts'/>}/>
+          <Route path='/404' element={<h1>404 | Not Found</h1>}/>
+          <Route path='*' element={<Navigate to='/404'/>}/>
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }

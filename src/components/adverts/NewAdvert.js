@@ -5,7 +5,7 @@ import { Checkbox, FormField } from "./auth/FormField"
 const NewAd = props => {
     return(
         <Page title='Create your advert' {...props}>
-            <form>
+            <form className="newAd-form">
                 <FormField
                 label='Name'/>
                 <FormField
