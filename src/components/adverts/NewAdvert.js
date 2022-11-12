@@ -13,7 +13,9 @@ const NewAd = () => {
         tags : Array
         
     })
-    const [photo, setPhotoFile ] = useState(null)
+    const [photo, setPhotoFile ] = useState({
+        photo : String
+    })
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const resetError = () => setError(null);
@@ -22,13 +24,16 @@ const NewAd = () => {
         setFormData({...formData, [event.target.name]: event.target.value})
     }
     const hadleFileChange = (event) =>{
-        setPhotoFile({photo, [event.target.name] : event.target.files[0]})
+        setPhotoFile({...photo,[event.target.name] : event.target.files})
     }
+    
     
     const handleSubmit = async event =>{
         event.preventDefault();
+        const data = new FormData(event.target)
         try {
-            await createAdvert(formData,photo)
+            
+            await createAdvert(data)
             alert('Advert created successfully')
             navigate('/');
         } catch (error) {
@@ -44,21 +49,22 @@ const NewAd = () => {
                 name='name'
                 type= 'text'
                 onChange={handleChange}
-                
+                required
                 />
                 <FormField
                 label='Price'
                 name='price'
                 type='number'
                 onChange={handleChange}
-                
+                required
                 />
                 <SelectField 
                 label='Sale' 
                 name='sale' 
                 onChange={handleChange}
+                required
                 >
-                    <option>Options</option>
+                    <option></option>
                     <option value='true'>True</option>
                     <option value='false'>False</option>
                 </SelectField>
@@ -66,8 +72,9 @@ const NewAd = () => {
                 label='Tags' 
                 name='tags' 
                 onChange={handleChange}
+                required
                 >
-                    <option>Options</option>
+                    <option></option>
                     <option value='lifestyle'>Lifestyle</option>
                     <option value='mobile'>Mobile</option>
                     <option value='motor'>Motor</option>
@@ -77,10 +84,10 @@ const NewAd = () => {
                 type="file"
                 name='photo'
                 onChange={hadleFileChange}
-                accepts={['image/png', '.pdf']}
                 />
                 <div>
-                    <button type="submit"> 
+                    <button 
+                    type="submit"> 
                     Post Advert 
                     </button>
                     <Link to ='/'>
