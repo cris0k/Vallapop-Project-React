@@ -2,13 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Page from "../layout/Page";
 import { noPhotoImg } from "./AdvertsPage";
-import { getAdsDetail } from "./service";
+import Confirmation from "./confirmation";
+import { deleteAdvert, getAdsDetail } from "./service";
 
 const AdDetail = props => {
     const [ad, setAd] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
     const unmounteRef = useRef(false);
+    const [error, setError] = useState(null);
+    const resetError = () => setError(null);
+    
+    
 
     useEffect(() => {
         getAdsDetail(id)
@@ -29,6 +34,18 @@ const AdDetail = props => {
         };
     }, []);
 
+    
+    const handleDelete = () =>{
+        
+        try {
+            deleteAdvert(id)
+            alert('Advert deleted successfully')
+            navigate('/')
+        } catch (error) {
+            setError(error);
+        }
+    }
+
     return(
         <Page title='Advert Detail' {...props}>
             <div className="ad-details"> 
@@ -39,13 +56,30 @@ const AdDetail = props => {
                     <p>{ad.sale ? 'Selling' : 'Searching'}</p>
                     <p>Tags : {ad.tags}</p>
                     <time>{Date(ad.createdAt)}</time>
+                    <div className="delete-bttn">
+                        <button onClick={handleDelete}> Delete </button>
+                    </div>
+                    <div
+                    >
+                        
+                        <Confirmation
+                        label='Are you sure you would like to delete this advert?'
+                        >
+                        </Confirmation>
+                    </div>
+                
                 </div>
+                
                 <Link to ='/' className="go-back-bttn">
                     <button > Back </button>
                 </Link>
+                {error && (
+                <div onClick={resetError} className="page-error">
+                {error.message = 'Sorry but the advert deleted'}</div>)}
             </div>
         </Page>
     ) 
+                    
     
 }
 

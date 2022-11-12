@@ -13,7 +13,7 @@ const NewAd = () => {
         tags : Array
         
     })
-    const [photoFile, setPhotoFile ] = useState('')
+    const [photo, setPhotoFile ] = useState(null)
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const resetError = () => setError(null);
@@ -21,14 +21,14 @@ const NewAd = () => {
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})
     }
-    const hadleFileChange = event =>{
-        setPhotoFile({...photoFile, [event.target.name]: event.target.files[0]})
+    const hadleFileChange = (event) =>{
+        setPhotoFile({photo, [event.target.name] : event.target.files[0]})
     }
     
     const handleSubmit = async event =>{
         event.preventDefault();
         try {
-            await createAdvert(formData,photoFile)
+            await createAdvert(formData,photo)
             alert('Advert created successfully')
             navigate('/');
         } catch (error) {
@@ -77,6 +77,7 @@ const NewAd = () => {
                 type="file"
                 name='photo'
                 onChange={hadleFileChange}
+                accepts={['image/png', '.pdf']}
                 />
                 <div>
                     <button type="submit"> 

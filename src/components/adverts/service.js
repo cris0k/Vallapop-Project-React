@@ -23,3 +23,8 @@ export const createAdvert = advert => {
   
   
 };
+
+export const deleteAdvert = adId => {
+  const url = `${adsUrl}/${adId}`;
+  return client.delete(url);
+}

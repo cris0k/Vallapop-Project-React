@@ -13,6 +13,8 @@
   --disabled:#bec0c1;
   --details-gray:#e8f0f0;
   --black-shadow:#00000060;
+  --details-red:#fa46467e;
+
   
   font-family: 'Poppins', sans-serif;
 }
@@ -59,6 +61,12 @@ body {
 }
 .ad-details div {
   margin:20px;
+}
+.delete-bttn{
+  display: flex;
+  justify-self:flex- ;
+  align-self: flex-end;
+  
 }
 
 .go-back-bttn {
