@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Page from "../layout/Page";
 import { noPhotoImg } from "./AdvertsPage";
-import Confirmation from "./confirmation";
+import ConfirmationDialog,{  DeleteButton } from "./common/confirmation";
 import { deleteAdvert, getAdsDetail } from "./service";
 
-const AdDetail = props => {
+const AdDetail = ( props) => {
     const [ad, setAd] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
@@ -44,7 +44,7 @@ const AdDetail = props => {
         } catch (error) {
             setError(error);
         }
-    }
+    } 
 
     return(
         <Page title='Advert Detail' {...props}>
@@ -56,16 +56,17 @@ const AdDetail = props => {
                     <p>{ad.sale ? 'Selling' : 'Searching'}</p>
                     <p>Tags : {ad.tags}</p>
                     <time>{Date(ad.createdAt)}</time>
-                    <div className="delete-bttn">
-                        <button onClick={handleDelete}> Delete </button>
-                    </div>
-                    <div
-                    >
-                        
-                        <Confirmation
-                        label='Are you sure you would like to delete this advert?'
+                    <div>
+                        <DeleteButton
+                        handleDelete ={handleDelete}
                         >
-                        </Confirmation>
+                            <ConfirmationDialog>
+
+                            </ConfirmationDialog>
+
+                        </DeleteButton>
+                        
+    
                     </div>
                 
                 </div>
