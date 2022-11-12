@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from 'react-router-dom';
+import storage from "../../../utils/storage";
 import { useAuth } from "./Context";
 import {FormField, Checkbox } from "./FormField";
 import { login } from "./service";
@@ -22,7 +23,7 @@ const LoginPage = () => {
     const [checked, setChecked] = useState(false)
 
     
-    const handleChecked = () => setChecked(!checked)
+    const handleChecked = (event) => setChecked(event.target.value)
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -31,8 +32,13 @@ const LoginPage = () => {
             setIsLoading(true);
             await login({email,password});
             handleLogin();
+
+            if (!checked){
+                storage.clear()
+            }
             const to = location.state?.from?.pathname || '/';
             navigate(to, { replace: true });
+            
 
         } catch (error) {
             setError(error);
