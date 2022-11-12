@@ -1,28 +1,83 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import Page from "../layout/Page"
-import { Checkbox, FormField } from "./auth/FormField"
+import { FormField, SelectField } from "./auth/FormField"
+import { createAdvert } from "./service"
 
-const NewAd = props => {
+const NewAd = () => {
+    
+    const [formData, setFormData] = useState({
+        name : String,
+        price : Number,
+        sale : Boolean,
+        tags : Array
+        
+    })
+    const [photoFile, setPhotoFile ] = useState('')
+    const navigate = useNavigate();
+    const [error, setError] = useState(null);
+    const resetError = () => setError(null);
+
+    const handleChange = (event) => {
+        setFormData({...formData, [event.target.name]: event.target.value})
+    }
+    const hadleFileChange = event =>{
+        setPhotoFile({...photoFile, [event.target.name]: event.target.files[0]})
+    }
+    
+    const handleSubmit = async event =>{
+        event.preventDefault();
+        try {
+            await createAdvert(formData,photoFile)
+            alert('Advert created successfully')
+            navigate('/');
+        } catch (error) {
+            setError(error);
+        }
+        
+    }
     return(
-        <Page title='Create your advert' {...props}>
-            <form className="newAd-form">
+        <Page title='Create your advert' >
+            <form className="newAd-form" onSubmit={handleSubmit}>
                 <FormField
-                label='Name'/>
+                label='Name'
+                name='name'
+                type= 'text'
+                onChange={handleChange}
+                
+                />
                 <FormField
-                label='Price'/>
-                <Checkbox
-                label='sale'/>
-                <Checkbox
-                label='search'/>
-                <select value='tags'>
+                label='Price'
+                name='price'
+                type='number'
+                onChange={handleChange}
+                
+                />
+                <SelectField 
+                label='Sale' 
+                name='sale' 
+                onChange={handleChange}
+                >
+                    <option>Options</option>
+                    <option value='true'>True</option>
+                    <option value='false'>False</option>
+                </SelectField>
+                <SelectField 
+                label='Tags' 
+                name='tags' 
+                onChange={handleChange}
+                >
+                    <option>Options</option>
                     <option value='lifestyle'>Lifestyle</option>
                     <option value='mobile'>Mobile</option>
                     <option value='motor'>Motor</option>
                     <option value='work'>Work</option>
-                </select>
-                <input
+                </SelectField>
+                <FormField
                 type="file"
-                onChange={event => console.log(event.target.files)}/>
+                name='photo'
+                onChange={hadleFileChange}
+                />
                 <div>
                     <button type="submit"> 
                     Post Advert 
@@ -31,7 +86,12 @@ const NewAd = props => {
                         <button >Cancel</button>
                     </Link>
                 </div>
+                
             </form>
+            {error && (
+            <div onClick={resetError} className="page-error">
+            {error.message = 'Sorry but the advert was not created'}
+            </div>)}
         </Page>
     ) 
 }

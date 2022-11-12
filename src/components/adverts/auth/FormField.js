@@ -21,3 +21,13 @@ export const Checkbox = ({ label, className, ...props}) => {
     </div>
   )
 }
+
+export const SelectField = ({ label, className, ...props}) => {
+  return (
+    <div className='select-field'>
+      <span>{label}</span>
+      <select {...props}></select>
+    </div>
+    
+  )
+}

@@ -13,6 +13,7 @@ const LoginPage = () => {
 
     const handleChangeEmail = event => setEmail(event.target.value);
     const handleChangePassword = event => setPassword(event.target.value);
+    
     const resetError = () => setError(null);
     const [isLoading, setIsLoading] = useState(false);
     const location = useLocation();
@@ -73,7 +74,7 @@ const LoginPage = () => {
             disabled={ !(email && password && !isLoading)}> Log In </button>
         </form>
         {error && (
-        <div onClick={resetError} className="loginPage-error">
+        <div onClick={resetError} className="page-error">
           {error.message = 'Wrong email or password'}
           
         </div>

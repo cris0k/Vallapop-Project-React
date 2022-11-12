@@ -1,6 +1,11 @@
 import client from '../../api/client';
 
 const adsUrl = '/api/v1/adverts';
+const config = {
+  headers: {
+      'Content-Type': 'multipart/form-data'
+  }
+}
 
 export const getLatestAds = () => {
   const url = adsUrl;
@@ -12,7 +17,9 @@ export const getAdsDetail = adId => {
   return client.get(url);
 };
 
-export const createAdvert= ad => {
+export const createAdvert = advert => {
   const url = adsUrl;
-  return client.post(url, ad);
+  return client.post(url, advert ,config)
+  
+  
 };
