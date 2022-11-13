@@ -6,11 +6,12 @@ import SaleFilter from "./SaleField"
 import TagsFilter from "./TagsFields"
 
 
-const Filter = ({ title, children, adverts, ...props }) => {
+const Filter = ({ title, children, adverts,onFilter, ...props }) => {
+    
     const [filterState, setFilterState] = useState({
         name: '',
         sale: 'all',
-        price: {min: '', max:''},
+        price: { min : '', max :''},
         tags: {
             lifestyle : false,
             mobile: false,
@@ -18,7 +19,17 @@ const Filter = ({ title, children, adverts, ...props }) => {
             work : false,
         } 
     })
-    
+    const[filtered, setFiltered]=useState(useFilter(adverts,filterState))
+    const filter= useFilter
+
+    useEffect (()=>{
+        setFiltered (filter( adverts, filterState))
+    },[adverts,filterState,filter])
+
+    useEffect(()=>{
+        onFilter(filtered)
+    },[onFilter,filtered])
+
     return (
         
         <Fragment>

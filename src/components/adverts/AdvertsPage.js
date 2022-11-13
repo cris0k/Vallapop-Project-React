@@ -8,7 +8,7 @@ export const noPhotoImg = "https://lyrictheatreokc.com/wp-content/uploads/2021/1
 
 const AdsPage = props => {
     const [ads, setAds] = useState([])
-    
+    const [filteredAdverts , setfilteredAdverts] = useState([])
     
     useEffect( () => { //to control the render we use useEffecct()
         const execute = async () => {
@@ -18,6 +18,9 @@ const AdsPage = props => {
         execute();
         
     }, []) //[] means that it will render just one time
+    const onFilter = (ads)=>{
+        setfilteredAdverts(ads)
+    }
 
     return (
         <Page title='Adverts' {...props} >
@@ -25,7 +28,7 @@ const AdsPage = props => {
                 <div>
                     {ads.length ? (
                         <div className = "adsPage">
-                        {ads.map(ad => (
+                        {filteredAdverts.map(ad => (
                             <div key={ad.id} className = "ad">
                                 <Link to={`/api/v1/adverts/${ad.id}`}>
                                     <img src={ad.photo || noPhotoImg} alt={ad.name}></img>
@@ -43,7 +46,7 @@ const AdsPage = props => {
                                 )}
                 </div>
             <div>
-                <Filter title='Filter' adverts={ads}>
+                <Filter title='Filter' adverts={ads} onFilter={onFilter}>
                 
                 </Filter>
             </div>

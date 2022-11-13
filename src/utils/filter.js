@@ -5,16 +5,14 @@ export const useFilter=(adverts,{name,price,sale,tags })=>{
     .filter(filterBySale(sale))
     .filter(filterByTags(tags))
 
-    
-return filtered
-    
-    
+  return filtered
 }
 
-const filterByName = (param)=>
-    ({name})=>{
-        if( param==='') return true
-        return name.includes(param)}
+const filterByName = 
+(param)=>
+  ({name})=>{
+      if( param==='') return true
+      return name.includes(param)}
 
 const filterByPrice =
   ({ min, max }) =>
