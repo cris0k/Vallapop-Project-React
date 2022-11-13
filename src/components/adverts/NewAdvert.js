@@ -73,8 +73,9 @@ const NewAd = () => {
                 name='tags' 
                 onChange={handleChange}
                 required
+                multiple
                 >
-                    <option></option>
+        
                     <option value='lifestyle'>Lifestyle</option>
                     <option value='mobile'>Mobile</option>
                     <option value='motor'>Motor</option>

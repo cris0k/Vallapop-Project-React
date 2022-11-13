@@ -11,19 +11,17 @@ const LoginPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [checked, setChecked] = useState(false)
 
     const handleChangeEmail = event => setEmail(event.target.value);
     const handleChangePassword = event => setPassword(event.target.value);
     
     const resetError = () => setError(null);
-    const [isLoading, setIsLoading] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
     
-    const [checked, setChecked] = useState(false)
-
-    
-    const handleChecked = (event) => setChecked(event.target.value)
+    const handleChecked = () => setChecked(!checked)
 
     const handleSubmit = async event => {
         event.preventDefault();

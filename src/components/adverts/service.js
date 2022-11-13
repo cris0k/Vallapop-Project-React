@@ -28,3 +28,8 @@ export const deleteAdvert = adId => {
   const url = `${adsUrl}/${adId}`;
   return client.delete(url);
 }
+
+export const getTags = () =>{
+  const url = `${adsUrl}/tags`;
+  return client.get(url);
+}

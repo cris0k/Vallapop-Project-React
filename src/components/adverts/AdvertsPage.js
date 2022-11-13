@@ -2,13 +2,13 @@ import { useEffect, useState } from "react"
 import { getLatestAds } from "./service"
 import { Link } from "react-router-dom"
 import Page from "../layout/Page"
-import Filter from "./Filter"
+import Filter from "../filter/Filter"
 
 export const noPhotoImg = "https://lyrictheatreokc.com/wp-content/uploads/2021/11/Ciao-Ciao-Image-Coming-Soon-500px.jpg"
 
 const AdsPage = props => {
     const [ads, setAds] = useState([])
-
+    
     
     useEffect( () => { //to control the render we use useEffecct()
         const execute = async () => {
@@ -43,11 +43,8 @@ const AdsPage = props => {
                                 )}
                 </div>
             <div>
-                <Filter title='Filter'>
-                    <option value='lifestyle'>Lifestyle</option>
-                    <option value='mobile'>Mobile</option>
-                    <option value='motor'>Motor</option>
-                    <option value='work'>Work</option>
+                <Filter title='Filter' adverts={ads}>
+                
                 </Filter>
             </div>
         </section>   

@@ -32,6 +32,10 @@ label {
     border-color: var(--details-dark);
     cursor: pointer;
     font-size: 1.2rem;
+
+}
+.sale-filter {
+    display: flex;
 }
 .page-error, .confirmation {
     text-align: center;
@@ -52,11 +56,12 @@ label {
 .select-field {
     margin:20px;
     font-size: 1.5rem;
+    
 }
 
 select {
-    width: 150x;
-    height: 35px;
+    width: 100px;
+    height: 100px;
     margin-left: 10px;
     font-size: 1.2rem;
 }

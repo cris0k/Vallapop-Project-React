@@ -13,9 +13,7 @@ function App() {
     <div className="App">
         <Routes >
           <Route path ='/login' element={<LoginPage/>}/>
-          <Route
-          path = '/api/v1/adverts' 
-          element={<Layout />}>
+          <Route path = '/api/v1/adverts' element={<Layout />}>
 
             <Route index element = {
               <RequireAuth >

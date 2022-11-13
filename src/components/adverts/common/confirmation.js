@@ -1,8 +1,8 @@
 import T from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 export const DeleteButton = ({handleDelete}) => {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
