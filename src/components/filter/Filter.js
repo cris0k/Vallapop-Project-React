@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { Filtrado } from "../../utils/filter"
+import { useFilter } from "../../utils/filter"
 import NameFilter from "./NameField"
 import PriceFilter from "./PriceField"
 import SaleFilter from "./SaleField"
@@ -18,14 +18,7 @@ const Filter = ({ title, children, adverts, ...props }) => {
             work : false,
         } 
     })
-    useEffect(()=>{
-        
-        console.log(Filtrado(filterState,adverts));
-
-    },
-    [adverts,filterState])
-
-
+    
     return (
         
         <Fragment>
