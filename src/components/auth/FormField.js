@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import '../../../style/FormField.css';
+import '../../style/FormField.css';
 
 export const FormField = ({ className, label, ...props }) => {
   return (

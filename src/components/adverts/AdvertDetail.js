@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Page from "../layout/Page";
 import { noPhotoImg } from "./AdvertsPage";
-import ConfirmationDialog,{  DeleteButton } from "./common/confirmation";
+import ConfirmationDialog,{  DeleteButton } from "../common/confirmation";
 import { deleteAdvert, getAdsDetail } from "./service";
 
 const AdDetail = ( props) => {

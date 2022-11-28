@@ -1,9 +1,9 @@
 import client, {
     removeAuthorizationHeader,
     setAuthorizationHeader,
-  } from '../../../api/client';
+  } from '../../api/client';
 
-  import storage from '../../../utils/storage';
+  import storage from '../../utils/storage';
   
   export const login = credentials => {
     return client

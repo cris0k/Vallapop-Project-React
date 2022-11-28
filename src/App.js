@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate} from 'react-router-dom';
 import AdsPage from './components/adverts/AdvertsPage';
-import LoginPage from './components/adverts/auth/LoginPage';
+import LoginPage from './components/auth/LoginPage';
 import NewAd from './components/adverts/NewAdvert';
 import AdDetail from './components/adverts/AdvertDetail';
-import RequireAuth from './components/adverts/auth/RequireAuth';
+import RequireAuth from './components/auth/RequireAuth';
 import Layout from './components/layout/Layout';
 
 function App() {

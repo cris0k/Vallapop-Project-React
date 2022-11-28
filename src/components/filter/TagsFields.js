@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { Checkbox } from "../adverts/auth/FormField"
+import { Checkbox } from "../auth/FormField"
 import { getTags } from "../adverts/service"
 
 const TagsFilter= ({selectedTag,setSelected}) =>{

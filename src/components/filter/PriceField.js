@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { FormField } from "../adverts/auth/FormField"
+import { FormField } from "../auth/FormField"
 
 const PriceFilter =({priceFilter,setSelected})=>{
     const[price, setPrice ]=useState(priceFilter)

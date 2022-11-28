@@ -5,7 +5,7 @@ import './style/index.css';
 import App from './App';
 import storage from './utils/storage';
 import { setAuthorizationHeader } from './api/client';
-import { AuthContextProvider } from './components/adverts/auth/Context';
+import { AuthContextProvider } from './components/auth/Context';
 
 const accessToken = storage.get('auth')
 setAuthorizationHeader(accessToken)

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Page from "../layout/Page"
-import { FormField, SelectField } from "./auth/FormField"
+import { FormField, SelectField } from "../auth/FormField"
 import { createAdvert } from "./service"
 
 const NewAd = () => {

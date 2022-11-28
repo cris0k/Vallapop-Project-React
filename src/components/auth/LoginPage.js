@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from 'react-router-dom';
-import storage from "../../../utils/storage";
+import storage from "../../utils/storage";
 import { useAuth } from "./Context";
 import {FormField, Checkbox } from "./FormField";
 import { login } from "./service";

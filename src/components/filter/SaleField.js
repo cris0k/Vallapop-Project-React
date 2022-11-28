@@ -1,5 +1,5 @@
 import { Fragment} from "react"
-import { FormField } from "../adverts/auth/FormField"
+import { FormField } from "../auth/FormField"
 
 const SaleFilter = ({checkedSale, setSelected}) =>{
    
