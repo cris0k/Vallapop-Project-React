@@ -17,7 +17,7 @@ const Header = () => {
             </NavLink>
             <section> 
                 <nav className="header-nav">
-                    <NavLink to="/api/v1/adverts/new" className="nav-link" style={({ isActive }) => (isActive ? {  backgroundColor : 'var(--disabled)' } : null)}>
+                    <NavLink to="/adverts/new" className="nav-link" style={({ isActive }) => (isActive ? {  backgroundColor : 'var(--disabled)' } : null)}>
                     New Advert
                     </NavLink>
                     {isLogged ? (

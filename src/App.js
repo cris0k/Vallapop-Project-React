@@ -13,7 +13,7 @@ function App() {
     <div className="App">
         <Routes >
           <Route path ='/login' element={<LoginPage/>}/>
-          <Route path = '/api/v1/adverts' element={<Layout />}>
+          <Route path = '/adverts' element={<Layout />}>
 
             <Route index element = {
               <RequireAuth >
@@ -30,7 +30,7 @@ function App() {
 
           </Route>
           
-          <Route path='/' element={<Navigate to='/api/v1/adverts'/>}/>
+          <Route path='/' element={<Navigate to='/adverts'/>}/>
           <Route path='/404' element={<h1>404 | Not Found</h1>}/>
           <Route path='*' element={<Navigate to='/404'/>}/>
         </Routes>

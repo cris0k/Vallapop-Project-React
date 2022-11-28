@@ -30,7 +30,7 @@ const AdsPage = props => {
                         <div className = "adsPage">
                         {filteredAdverts.map(ad => (
                             <div key={ad.id} className = "ad">
-                                <Link to={`/api/v1/adverts/${ad.id}`}>
+                                <Link to={`/adverts/${ad.id}`}>
                                     <img src={ad.photo || noPhotoImg} alt={ad.name}></img>
                                 </Link>
                                     <p>{ad.name}</p>
@@ -40,7 +40,7 @@ const AdsPage = props => {
                             ))}
                         </div>
                             ):(
-                                <Link to='/api/v1/adverts/new'>
+                                <Link to='/adverts/new'>
                                     <button className="fistAd-bttn">Post First Advert</button>
                                 </Link>
                                 )}
