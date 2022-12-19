@@ -33,9 +33,9 @@ const NewAd = () => {
         const data = new FormData(event.target)
         try {
             
-            await createAdvert(data)
+            const {id} = await createAdvert(data)
             alert('Advert created successfully')
-            navigate('/');
+            navigate(`/adverts/${id}`);
         } catch (error) {
             setError(error);
         }
@@ -68,19 +68,15 @@ const NewAd = () => {
                     <option value='true'>True</option>
                     <option value='false'>False</option>
                 </SelectField>
-                <SelectField 
+                <FormField 
                 label='Tags' 
                 name='tags' 
                 onChange={handleChange}
                 required
-                multiple
                 >
         
-                    <option value='lifestyle'>Lifestyle</option>
-                    <option value='mobile'>Mobile</option>
-                    <option value='motor'>Motor</option>
-                    <option value='work'>Work</option>
-                </SelectField>
+        
+                </FormField>
                 <FormField
                 type="file"
                 name='photo'
