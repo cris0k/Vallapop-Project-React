@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Page from "../layout/Page"
 import { FormField, SelectField } from "../auth/FormField"
 import { createAdvert } from "./service"
+import { getTags } from "./service"
 
 const NewAd = () => {
-    
+    const [tags, setTags] = useState([])
     const [formData, setFormData] = useState({
         name : String,
         price : Number,
@@ -19,6 +20,15 @@ const NewAd = () => {
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const resetError = () => setError(null);
+
+    useEffect( () => { //to control the render we use useEffecct()
+        const execute = async () => {
+            const tags = await getTags();
+            setTags(tags)
+        }
+        execute();
+        
+    }, [])
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})
@@ -68,15 +78,24 @@ const NewAd = () => {
                     <option value='true'>True</option>
                     <option value='false'>False</option>
                 </SelectField>
-                <FormField 
+                <SelectField 
                 label='Tags' 
                 name='tags' 
                 onChange={handleChange}
+                multiple= {true}
                 required
                 >
+                   {tags.map( (tag,id) =>( 
+                    <option
+                    label={tag}
+                    className='tags'
+                    key={id}
+                    value={tag}
+                    ></option>
+            ))}
         
         
-                </FormField>
+                </SelectField>
                 <FormField
                 type="file"
                 name='photo'
