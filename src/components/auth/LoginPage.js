@@ -28,11 +28,11 @@ const LoginPage = () => {
         try {
             resetError();
             setIsLoading(true);
-            await login({email,password});
+            const accessToken = await login({email,password});
             handleLogin();
 
-            if (!checked){
-                storage.clear()
+            if (checked){
+                storage.set('auth', accessToken);
             }
             const to = location.state?.from?.pathname || '/';
             navigate(to, { replace: true });

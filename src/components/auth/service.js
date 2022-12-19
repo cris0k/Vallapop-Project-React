@@ -10,7 +10,8 @@ import client, {
     .post('/api/auth/login', credentials)
     .then(({ accessToken }) => {
       setAuthorizationHeader(accessToken);
-      storage.set('auth', accessToken);
+      return accessToken
+      //storage.set('auth', accessToken);
     });
   };
   
