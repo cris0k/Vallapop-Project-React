@@ -2,9 +2,9 @@ import { Fragment, useEffect, useState } from "react"
 import { Checkbox } from "../auth/FormField"
 import { getTags } from "../adverts/service"
 
-const TagsFilter= ({selectedTag,setSelected}) =>{
+const TagsFilter= ({checkedTag,setSelected}) =>{
     const [tags, setTags] = useState([])
-    const [selected, setSelectedState]= useState(selectedTag)
+    const [checked, setCheckedState]= useState(checkedTag)
     
     useEffect( () => { //to control the render we use useEffecct()
         const execute = async () => {
@@ -16,14 +16,14 @@ const TagsFilter= ({selectedTag,setSelected}) =>{
     }, [])
     useEffect(()=>{
 
-        setSelected((prevValue)=>({...prevValue, tags: selected}))
-    },[selected,setSelected])
+        setSelected((prevValue)=>({...prevValue, tags: checked}))
+    },[checked,setSelected])
     
-    const handleSelected=( event )=>{
+    const handleChecked=( event )=>{
         const tagValue = event.target.value
         const tagChecked = event.target.checked
         
-        setSelectedState({...selected, [tagValue] : tagChecked})
+        setCheckedState({...checked, [tagValue] : tagChecked})
         
     } 
 
@@ -34,10 +34,10 @@ const TagsFilter= ({selectedTag,setSelected}) =>{
                 <Checkbox
                 label={tag}
                 className='filter-tags'
-                onChange={handleSelected}
+                onChange={handleChecked}
                 key={id}
                 value={tag}
-                checked={selected[tag]}
+                checked={checked[tag]}
                 ></Checkbox>
             ))}
             

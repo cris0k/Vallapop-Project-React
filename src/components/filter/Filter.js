@@ -36,7 +36,7 @@ const Filter = ({ title, children, adverts,onFilter, ...props }) => {
 
             <PriceFilter priceFilter={filterState.price} setSelected={setFilterState}/>
             
-            <TagsFilter  selectedTag={filterState.tags} setSelected={setFilterState}/>
+            <TagsFilter  checkedTag={filterState.tags} setSelected={setFilterState}/>
 
         </form>
         </Fragment>
