@@ -1,46 +1,34 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Page from "../layout/Page"
 import { FormField, SelectField } from "../auth/FormField"
 import { createAdvert } from "./service"
-import { getTags } from "./service"
+import TagSelector from "./TagsSelector"
 
 const NewAd = () => {
-    const [tags, setTags] = useState([])
+   
     const [formData, setFormData] = useState({
         name : String,
         price : Number,
         sale : Boolean,
-        tags : Array
-        
-    })
-    const [photo, setPhotoFile ] = useState({
+        tags : Array,
         photo : String
     })
+    
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const resetError = () => setError(null);
-
-    useEffect( () => { //to control the render we use useEffecct()
-        const execute = async () => {
-            const tags = await getTags();
-            setTags(tags)
-        }
-        execute();
-        
-    }, [])
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})
     }
     const hadleFileChange = (event) =>{
-        setPhotoFile({...photo,[event.target.name] : event.target.files})
+        setFormData({...formData,[event.target.name] : event.target.files[0]})
     }
-    
     
     const handleSubmit = async event =>{
         event.preventDefault();
-        const data = new FormData(event.target)
+        const data = formData
         try {
             
             const {id} = await createAdvert(data)
@@ -51,6 +39,7 @@ const NewAd = () => {
         }
         
     }
+    const formTags = String(formData.tags)
     return(
         <Page title='Create your advert' >
             <form className="newAd-form" onSubmit={handleSubmit}>
@@ -78,24 +67,14 @@ const NewAd = () => {
                     <option value='true'>True</option>
                     <option value='false'>False</option>
                 </SelectField>
-                <SelectField 
-                label='Tags' 
-                name='tags' 
-                onChange={handleChange}
-                multiple= {true}
+                <TagSelector
+                tagSelected={formData.tags}
+                setSelected={setFormData}
                 required
-                >
-                   {tags.map( (tag,id) =>( 
-                    <option
-                    label={tag}
-                    className='tags'
-                    key={id}
-                    value={tag}
-                    ></option>
-            ))}
-        
-        
-                </SelectField>
+                />
+                
+                <span>Tags selected : {formTags}</span>
+                
                 <FormField
                 type="file"
                 name='photo'
