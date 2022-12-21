@@ -12,12 +12,7 @@ const Filter = ({ title, children, adverts,onFilter, ...props }) => {
         name: '',
         sale: 'all',
         price: { min : '', max :''},
-        tags: {
-            lifestyle : false,
-            mobile: false,
-            motor: false,
-            work : false,
-        } 
+        tags: false
     })
     const[filtered, setFiltered]=useState(useFilter(adverts,filterState))
     const filter= useFilter

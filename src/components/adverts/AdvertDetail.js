@@ -12,6 +12,7 @@ const AdDetail = ( props) => {
     const unmounteRef = useRef(false);
     const [error, setError] = useState(null);
     const resetError = () => setError(null);
+    const tagsString = String(ad.tags)
     
     
 
@@ -35,10 +36,10 @@ const AdDetail = ( props) => {
     }, []);
 
     
-    const handleDelete = () =>{
+    const handleDelete = async () =>{
         
         try {
-            deleteAdvert(id)
+            await deleteAdvert(id)
             alert('Advert deleted successfully')
             navigate('/')
         } catch (error) {
@@ -54,8 +55,8 @@ const AdDetail = ( props) => {
                     <p>{ad.name}</p>
                     <p>{ad.price} €</p>
                     <p>{ad.sale ? 'Selling' : 'Searching'}</p>
-                    <p>Tags : {ad.tags}</p>
-                    <time>{Date(ad.createdAt)}</time>
+                    <p>Tags : {tagsString}</p>
+                    <time>{ad.createdAt}</time>
                     <div>
                         <DeleteButton
                         handleDelete ={handleDelete}
