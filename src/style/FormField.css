@@ -11,6 +11,7 @@
     background-color: var(--background-color);
     box-shadow: 2px 2px 6px var(--black-shadow);
     overflow: hidden;
+    text-align: center;
     
 }
 
@@ -18,11 +19,6 @@
     font-size: 1.5rem;
     margin: 10px;
     
-}
-label {
-    display: flex;
-    flex-direction: column;
-
 }
 
 .formField-input {
@@ -34,9 +30,7 @@ label {
     font-size: 1.2rem;
 
 }
-.sale-filter {
-    display: flex;
-}
+
 .page-error, .confirmation {
     text-align: center;
     background-color:var(--details-red);
@@ -60,8 +54,6 @@ label {
 }
 
 select {
-    width: 100px;
-    height: 100px;
     margin-left: 10px;
     font-size: 1.2rem;
 }
