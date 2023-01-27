@@ -25,8 +25,12 @@ const TagSelector = ({tagSelected,setSelected})=> {
     const hadleTagsChange = (event)=>{
         setTagsSelected([...tagsSelected, event.target.value]);
         } 
-
+    const resetTags = (event) => {
+        event.preventDefault();
+        setTagsSelected([])};
+        
     return (
+        <>
         <SelectField
             label='Tags' 
             name='tags' 
@@ -44,7 +48,10 @@ const TagSelector = ({tagSelected,setSelected})=> {
                 />
         ))}
         
+        
         </SelectField>
+        <button className="tags-delete" onClick={resetTags} >X</button>
+        </>
     )
 }
 export default TagSelector

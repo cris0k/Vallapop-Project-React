@@ -8,11 +8,11 @@ import TagSelector from "./TagsSelector"
 const NewAd = () => {
    
     const [formData, setFormData] = useState({
-        name : String,
-        price : Number,
-        sale : Boolean,
-        tags : Array,
-        photo : String
+        name : '',
+        price : '',
+        sale : false,
+        tags : [],
+        photo : null
     })
     
     const navigate = useNavigate();
@@ -73,7 +73,7 @@ const NewAd = () => {
                 required
                 />
                 
-                <span>Tags selected : {formTags}</span>
+                <span className="selected-tags">Selected tags : {formTags}</span>
                 
                 <FormField
                 type="file"
