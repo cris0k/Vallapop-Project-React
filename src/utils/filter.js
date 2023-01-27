@@ -42,7 +42,7 @@ const filterBySale =
     let condition = false
 
     if (filterParam === "all") return true
-    filterParam === "sell" ? (condition = true) : (condition = false)
+    filterParam === "selling" ? (condition = true) : (condition = false)
 
     return condition === sale
   }

@@ -17,8 +17,8 @@ const SaleFilter = ({checkedSale, setSelected}) =>{
             label='Selling'
             name='radio'
             onChange={handleSale}
-            checked={checkedSale ==='sale'}
-            value='sale'
+            checked={checkedSale ==='selling'}
+            value='selling'
             ></FormField>
             
             <FormField
