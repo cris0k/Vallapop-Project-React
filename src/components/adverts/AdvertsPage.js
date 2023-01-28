@@ -10,14 +10,14 @@ const AdsPage = props => {
     const [ads, setAds] = useState([])
     const [filteredAdverts , setfilteredAdverts] = useState([])
     
-    useEffect( () => { //to control the render we use useEffecct()
+    useEffect( () => { 
         const execute = async () => {
             const adverts = await getLatestAds();
             setAds(adverts.reverse())
         }
         execute();
         
-    }, []) //[] means that it will render just one time
+    }, [])
     const onFilter = (ads)=>{
         setfilteredAdverts(ads)
     }
