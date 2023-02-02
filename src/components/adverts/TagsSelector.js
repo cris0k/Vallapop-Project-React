@@ -23,14 +23,11 @@ const TagSelector = ({tagSelected,setSelected})=> {
     },[tagsSelected, setSelected])
 
     const hadleTagsChange = (event)=>{
-        if(!tagsSelected.includes(event.target.value) && tagsSelected.length < 4) {
-            const newSelected = [...tagsSelected, event.target.value];
-            setTagsSelected(newSelected)
-          } else {
-            const newSelected = tagsSelected.filter(tag => tag !== event.target.value)
-            setTagsSelected(newSelected)
-          }
-
+        const newSelected = !tagsSelected.includes(event.target.value) && tagsSelected.length <= 4 ? 
+        [...tagsSelected, event.target.value] : 
+        tagsSelected.filter(tag => tag !== event.target.value)
+        
+        setTagsSelected(newSelected)
     }
        
     const resetTags = (event) => {
