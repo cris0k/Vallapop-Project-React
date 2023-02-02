@@ -23,7 +23,7 @@ const TagSelector = ({tagSelected,setSelected})=> {
     },[tagsSelected, setSelected])
 
     const hadleTagsChange = (event)=>{
-        const newSelected = !tagsSelected.includes(event.target.value) && tagsSelected.length <= 4 ? 
+        const newSelected = !tagsSelected.includes(event.target.value) ? 
         [...tagsSelected, event.target.value] : 
         tagsSelected.filter(tag => tag !== event.target.value)
         
